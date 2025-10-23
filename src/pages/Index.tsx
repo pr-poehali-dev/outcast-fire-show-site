@@ -75,7 +75,8 @@ const Index = () => {
               <img 
                 src="https://cdn.poehali.dev/files/6542e7b2-83ab-46b5-8dee-6d7f743b92c4.jpg" 
                 alt="OUTCAST Logo" 
-                className="h-12 w-auto object-contain"
+                className="h-12 w-auto object-contain logo-animate cursor-pointer"
+                onClick={() => scrollToSection('home')}
               />
             </div>
             <div className="hidden md:flex gap-6">
@@ -356,7 +357,8 @@ const Index = () => {
               <img 
                 src="https://cdn.poehali.dev/files/6542e7b2-83ab-46b5-8dee-6d7f743b92c4.jpg" 
                 alt="OUTCAST Logo" 
-                className="h-8 w-auto object-contain"
+                className="h-8 w-auto object-contain logo-animate cursor-pointer"
+                onClick={() => scrollToSection('home')}
               />
             </div>
             <p className="text-sm text-muted-foreground">
