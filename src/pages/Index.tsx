@@ -13,6 +13,7 @@ const Index = () => {
     phone: '',
     message: ''
   });
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const createParticle = () => {
@@ -52,6 +53,7 @@ const Index = () => {
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    setIsMobileMenuOpen(false);
   };
 
   const programs = [
@@ -113,10 +115,49 @@ const Index = () => {
               <button onClick={() => scrollToSection('prices')} className="hover:text-primary transition-colors">Цены</button>
               <button onClick={() => scrollToSection('contacts')} className="hover:text-primary transition-colors">Контакты</button>
             </div>
-            <Button onClick={() => scrollToSection('contacts')} className="bg-gradient-to-r from-primary to-accent hover:opacity-90">
-              Заказать шоу
-            </Button>
+            <div className="flex items-center gap-4">
+              <Button onClick={() => scrollToSection('contacts')} className="hidden md:flex bg-gradient-to-r from-primary to-accent hover:opacity-90">
+                Заказать шоу
+              </Button>
+              <button 
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="md:hidden p-2 hover:bg-primary/20 rounded-lg transition-colors"
+                aria-label="Меню"
+              >
+                {isMobileMenuOpen ? (
+                  <Icon name="X" size={24} className="text-primary" />
+                ) : (
+                  <Icon name="Menu" size={24} className="text-primary" />
+                )}
+              </button>
+            </div>
           </div>
+          {isMobileMenuOpen && (
+            <div className="md:hidden mt-4 pb-4 space-y-3 animate-fade-in">
+              <button onClick={() => scrollToSection('home')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
+                Главная
+              </button>
+              <button onClick={() => scrollToSection('programs')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
+                Программы
+              </button>
+              <button onClick={() => scrollToSection('gallery')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
+                Галерея
+              </button>
+              <button onClick={() => scrollToSection('prices')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
+                Цены
+              </button>
+              <button onClick={() => scrollToSection('contacts')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
+                Контакты
+              </button>
+              <Button 
+                onClick={() => scrollToSection('contacts')} 
+                className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 mt-4"
+              >
+                <Icon name="Flame" size={18} className="mr-2" />
+                Заказать шоу
+              </Button>
+            </div>
+          )}
         </div>
       </nav>
 
