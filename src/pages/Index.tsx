@@ -162,6 +162,40 @@ const Index = () => {
         "Работа пиротехника на площадке"
       ],
       suitable: "Идеально для завершения свадеб, юбилеев и торжественных мероприятий"
+    },
+    {
+      title: "Пиротехнические огнепады",
+      description: "Стена из струй холодного огня и искр, напоминающий огненный дождь или водопад",
+      duration: "По запросу",
+      price: "от 10 000 ₽",
+      videoUrl: "https://vk.com/wall-203229964_900",
+      features: [
+        "Эффект огненного дождя",
+        "Безопасные холодные искры",
+        "Впечатляющая визуальная стена",
+        "Работа пиротехника на площадке",
+        "Оформление площадки"
+      ],
+      suitable: "Создаёт невероятную атмосферу на любом празднике"
+    },
+    {
+      title: "Огненные символы",
+      description: "Огненный реквизит с индивидуальными символами, словами и инициалами",
+      duration: "По запросу",
+      price: "от 2 000 ₽",
+      videoUrls: [
+        { url: "https://vk.com/video-203229964_456239509", label: "ВЫХОДИ ЗА МЕНЯ" },
+        { url: "https://vk.com/wall-203229964_649", label: "LOVE" },
+        { url: "https://vk.com/wall-203229964_91", label: "Инициалы имени" }
+      ],
+      features: [
+        "Индивидуальные огненные символы",
+        "Огненные чаши для оформления площадки",
+        "Собственная акустическая система",
+        "Музыкальное сопровождение",
+        "Работа пиротехника на площадке"
+      ],
+      suitable: "Идеально для предложений руки и сердца, признаний в любви, юбилеев"
     }
   ];
 
@@ -416,7 +450,7 @@ const Index = () => {
               >
                 <CardHeader>
                   <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mb-4 animate-flicker">
-                    <Icon name={index === 0 ? "Heart" : "Sparkles"} size={24} />
+                    <Icon name={index === 0 ? "Heart" : index === 2 ? "Droplets" : index === 3 ? "Type" : "Sparkles"} size={24} />
                   </div>
                   <CardTitle className="text-2xl">{installation.title}</CardTitle>
                   <CardDescription className="text-base">{installation.description}</CardDescription>
@@ -427,6 +461,33 @@ const Index = () => {
                       <Icon name="Clock" size={18} className="text-primary" />
                       <span>{installation.duration}</span>
                     </div>
+                    {installation.videoUrl && (
+                      <a 
+                        href={installation.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 p-3 bg-primary/10 rounded-lg border border-primary/20 hover:bg-primary/20 transition-all group"
+                      >
+                        <Icon name="Play" size={18} className="text-primary group-hover:scale-110 transition-transform" />
+                        <span className="text-sm font-medium">Смотреть видео-пример</span>
+                      </a>
+                    )}
+                    {installation.videoUrls && (
+                      <div className="space-y-2">
+                        {installation.videoUrls.map((video: any, vidIdx: number) => (
+                          <a 
+                            key={vidIdx}
+                            href={video.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 p-3 bg-primary/10 rounded-lg border border-primary/20 hover:bg-primary/20 transition-all group"
+                          >
+                            <Icon name="Play" size={18} className="text-primary group-hover:scale-110 transition-transform" />
+                            <span className="text-sm font-medium">Видео: {video.label}</span>
+                          </a>
+                        ))}
+                      </div>
+                    )}
                     <div className="space-y-2">
                       {installation.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start gap-2">
@@ -496,9 +557,12 @@ const Index = () => {
             Стоимость зависит от программы, продолжительности и сложности выступления
           </p>
           
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-3xl mx-auto space-y-8">
             <Card className="bg-card border-primary/20">
-              <CardContent className="p-8">
+              <CardHeader>
+                <CardTitle className="text-2xl">Огненные постановки</CardTitle>
+              </CardHeader>
+              <CardContent className="p-8 pt-0">
                 <div className="space-y-6">
                   {programs.map((program, index) => (
                     <div key={index} className="flex items-center justify-between pb-6 border-b border-border last:border-0 last:pb-0">
@@ -510,17 +574,37 @@ const Index = () => {
                     </div>
                   ))}
                 </div>
-                <div className="mt-8 p-4 bg-muted/50 rounded-lg">
-                  <div className="flex items-start gap-2">
-                    <Icon name="Info" size={20} className="text-primary mt-1" />
-                    <p className="text-sm text-muted-foreground">
-                      Итоговая стоимость рассчитывается индивидуально и зависит от количества артистов, 
-                      использования дополнительных эффектов и удаленности площадки
-                    </p>
-                  </div>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card border-primary/20">
+              <CardHeader>
+                <CardTitle className="text-2xl">Инсталляции и оформление</CardTitle>
+              </CardHeader>
+              <CardContent className="p-8 pt-0">
+                <div className="space-y-6">
+                  {installations.map((installation, index) => (
+                    <div key={index} className="flex items-center justify-between pb-6 border-b border-border last:border-0 last:pb-0">
+                      <div>
+                        <h3 className="text-xl font-bold mb-1">{installation.title}</h3>
+                        <p className="text-sm text-muted-foreground">{installation.duration}</p>
+                      </div>
+                      <div className="text-2xl font-bold text-primary">{installation.price}</div>
+                    </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
+
+            <div className="p-4 bg-muted/50 rounded-lg">
+              <div className="flex items-start gap-2">
+                <Icon name="Info" size={20} className="text-primary mt-1" />
+                <p className="text-sm text-muted-foreground">
+                  Итоговая стоимость рассчитывается индивидуально и зависит от количества артистов, 
+                  использования дополнительных эффектов и удаленности площадки
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
