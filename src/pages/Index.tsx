@@ -62,6 +62,7 @@ const Index = () => {
       description: "Парное выступление, наполненное огнём, искрами и драйвом современной музыки",
       duration: "6 минут",
       price: "от 18 000 ₽",
+      videoUrl: "https://vk.com/wall-203229964_921",
       features: [
         "2 артиста",
         "3 вида огненного реквизита",
@@ -97,6 +98,7 @@ const Index = () => {
       description: "Непередаваемая дикая энергия степей и огненных 'шаманов' прямиком с Урала. ЗДЕСЬ БУШУЕТ ОГОНЬ И ИСКРЫ",
       duration: "10 минут",
       price: "от 32 000 ₽",
+      videoUrl: "https://vk.com/wall-203229964_893",
       features: [
         "7 видов огненного реквизита",
         "4 вида пиротехнического реквизита",
@@ -108,6 +110,43 @@ const Index = () => {
         "🎁 2 фонтана в подарок"
       ],
       suitable: "Идеально для тех, кто хочет удивить гостей необычным и мощным огненным шоу"
+    },
+    {
+      title: "Постановка «SORRY MAX»",
+      description: "Грандиозное огненное представление с максимальным количеством реквизита и спецэффектов",
+      duration: "15 минут",
+      price: "от 45 000 ₽",
+      videoUrl: "https://vk.com/wall-203229964_836",
+      features: [
+        "8 видов огненного реквизита",
+        "6 видов пиротехнического реквизита",
+        "Уйма фоновой пиротехники",
+        "Эксклюзивный реквизит (единственный в Челябинской области)",
+        "Сценический свет и огненные чаши",
+        "Акустическая система 500Вт",
+        "🎁 Церемония зажжения сердца в подарок"
+      ],
+      suitable: "Отлично смотрится на свадьбе, корпоративе, выпускном, юбилее, вечеринке любого уровня"
+    }
+  ];
+
+  const installations = [
+    {
+      title: "Церемония зажжения огненного сердца",
+      description: "Пылающее пламенем сердце, зажжённое от рук молодожёнов, столб холодных искр вырывающийся вверх - эта настоящая феерия не оставит никого равнодушным",
+      duration: "4-7 минут",
+      price: "от 7 000 ₽",
+      features: [
+        "Дорожка из огненных чаш",
+        "Собственная акустическая система",
+        "Музыкальное сопровождение на ваш выбор",
+        "2 холодных фонтана (4 метра в высоту, 45 секунд работы)",
+        "Огненное сердце и булавы",
+        "Работа пиротехника на площадке",
+        "Трансфер по городу Челябинск",
+        "Дополнительные фонтаны от 1 700 ₽/шт"
+      ],
+      suitable: "Романтическая церемония идеально подходит для свадеб и торжественных мероприятий"
     }
   ];
 
@@ -170,6 +209,7 @@ const Index = () => {
             <div className="hidden md:flex gap-6">
               <button onClick={() => scrollToSection('home')} className="hover:text-primary transition-colors">Главная</button>
               <button onClick={() => scrollToSection('programs')} className="hover:text-primary transition-colors">Программы</button>
+              <button onClick={() => scrollToSection('installations')} className="hover:text-primary transition-colors">Инсталляции</button>
               <button onClick={() => scrollToSection('gallery')} className="hover:text-primary transition-colors">Галерея</button>
               <button onClick={() => scrollToSection('prices')} className="hover:text-primary transition-colors">Цены</button>
               <button onClick={() => scrollToSection('contacts')} className="hover:text-primary transition-colors">Контакты</button>
@@ -198,6 +238,9 @@ const Index = () => {
               </button>
               <button onClick={() => scrollToSection('programs')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
                 Программы
+              </button>
+              <button onClick={() => scrollToSection('installations')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
+                Инсталляции
               </button>
               <button onClick={() => scrollToSection('gallery')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
                 Галерея
@@ -322,6 +365,65 @@ const Index = () => {
                     </div>
                   )}
                   <div className="text-3xl font-bold text-primary">{program.price}</div>
+                  <Button 
+                    onClick={() => scrollToSection('contacts')}
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90"
+                  >
+                    Заказать
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="installations" className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Инсталляции</h2>
+          <p className="text-center text-muted-foreground mb-12">
+            Огненные церемонии и оформление вашего праздника
+          </p>
+
+          <div className="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
+            {installations.map((installation, index) => (
+              <Card 
+                key={index} 
+                className="bg-card border-primary/20 hover:border-primary/50 transition-all hover-scale"
+              >
+                <CardHeader>
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mb-4 animate-flicker">
+                    <Icon name="Heart" size={24} />
+                  </div>
+                  <CardTitle className="text-2xl">{installation.title}</CardTitle>
+                  <CardDescription className="text-base">{installation.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-muted-foreground">
+                      <Icon name="Clock" size={18} className="text-primary" />
+                      <span>{installation.duration}</span>
+                    </div>
+                    <div className="space-y-2">
+                      {installation.features.map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-2">
+                          <Icon name="Check" size={18} className="text-primary mt-1" />
+                          <span className="text-sm">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </CardContent>
+                <CardFooter className="flex-col items-start gap-4">
+                  {installation.suitable && (
+                    <div className="w-full p-3 bg-primary/10 rounded-lg border border-primary/20 mb-2">
+                      <p className="text-sm text-muted-foreground">
+                        <Icon name="Sparkles" size={16} className="inline text-primary mr-2" />
+                        {installation.suitable}
+                      </p>
+                    </div>
+                  )}
+                  <div className="text-3xl font-bold text-primary">{installation.price}</div>
                   <Button 
                     onClick={() => scrollToSection('contacts')}
                     className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90"
