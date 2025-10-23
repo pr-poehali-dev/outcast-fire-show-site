@@ -147,6 +147,21 @@ const Index = () => {
         "Дополнительные фонтаны от 1 700 ₽/шт"
       ],
       suitable: "Романтическая церемония идеально подходит для свадеб и торжественных мероприятий"
+    },
+    {
+      title: "Пиротехнические мельницы",
+      description: "Яркое завершение, миллионы искр и вы в центре всей этой красоты",
+      duration: "По запросу",
+      price: "Уточняйте в личных сообщениях",
+      features: [
+        "3 луча - компактный вариант",
+        "6 лучей - стандартное оформление",
+        "12 лучей - грандиозное завершение",
+        "Безопасные холодные искры",
+        "Эффектное завершение мероприятия",
+        "Работа пиротехника на площадке"
+      ],
+      suitable: "Идеально для завершения свадеб, юбилеев и торжественных мероприятий"
     }
   ];
 
@@ -401,7 +416,7 @@ const Index = () => {
               >
                 <CardHeader>
                   <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mb-4 animate-flicker">
-                    <Icon name="Heart" size={24} />
+                    <Icon name={index === 0 ? "Heart" : "Sparkles"} size={24} />
                   </div>
                   <CardTitle className="text-2xl">{installation.title}</CardTitle>
                   <CardDescription className="text-base">{installation.description}</CardDescription>
