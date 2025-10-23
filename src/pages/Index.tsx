@@ -58,7 +58,7 @@ const Index = () => {
 
   const programs = [
     {
-      title: "Церемония зажжения сердец",
+      title: "Постановка «MYSTIC»",
       description: "Романтичное огненное шоу для свадеб и торжеств",
       duration: "15-20 минут",
       price: "от 12 000 ₽",
