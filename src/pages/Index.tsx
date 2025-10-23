@@ -72,10 +72,11 @@ const Index = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center animate-flicker">
-                <Icon name="Flame" size={24} className="text-white" />
-              </div>
-              <h1 className="text-2xl font-bold fire-glow">OUTCAST</h1>
+              <img 
+                src="https://cdn.poehali.dev/files/6542e7b2-83ab-46b5-8dee-6d7f743b92c4.jpg" 
+                alt="OUTCAST Logo" 
+                className="h-12 w-auto object-contain"
+              />
             </div>
             <div className="hidden md:flex gap-6">
               <button onClick={() => scrollToSection('home')} className="hover:text-primary transition-colors">Главная</button>
@@ -352,10 +353,11 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
-                <Icon name="Flame" size={18} className="text-white" />
-              </div>
-              <span className="font-bold">OUTCAST FIRE SHOW</span>
+              <img 
+                src="https://cdn.poehali.dev/files/6542e7b2-83ab-46b5-8dee-6d7f743b92c4.jpg" 
+                alt="OUTCAST Logo" 
+                className="h-8 w-auto object-contain"
+              />
             </div>
             <p className="text-sm text-muted-foreground">
               © 2024 OUTCAST. Все права защищены.
