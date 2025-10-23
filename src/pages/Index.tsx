@@ -58,25 +58,25 @@ const Index = () => {
 
   const programs = [
     {
-      title: "Старт Огня",
-      description: "Вводная программа с базовыми элементами огненного шоу",
+      title: "Церемония зажжения сердец",
+      description: "Романтичное огненное шоу для свадеб и торжеств",
       duration: "15-20 минут",
-      price: "от 15 000 ₽",
-      features: ["Файер-шоу", "Огненные poi", "Базовая хореография"]
+      price: "от 12 000 ₽",
+      features: ["Файер-шоу", "Огненные сердца", "Романтичная хореография", "Музыкальное сопровождение"]
     },
     {
-      title: "Огненный Шторм",
-      description: "Расширенная программа с профессиональными трюками",
-      duration: "25-30 минут",
-      price: "от 25 000 ₽",
-      features: ["Огненный staff", "Сложные трюки", "Пиротехника", "Музыкальное сопровождение"]
+      title: "Уличный перформанс",
+      description: "Динамичное шоу с профессиональными трюками",
+      duration: "20-30 минут",
+      price: "от 20 000 ₽",
+      features: ["Огненный staff", "Fire poi", "Пиротехника", "Сложные трюки", "LED-реквизит"]
     },
     {
-      title: "Inferno Premium",
-      description: "Полное огненное представление с максимальным эффектом",
-      duration: "40-45 минут",
-      price: "от 40 000 ₽",
-      features: ["Полный состав артистов", "Спецэффекты", "Индивидуальный сценарий", "Световое шоу"]
+      title: "Полное шоу OUTCAST",
+      description: "Грандиозное представление с максимальным эффектом",
+      duration: "35-45 минут",
+      price: "от 35 000 ₽",
+      features: ["Полный состав артистов", "Огненные инсталляции", "Спецэффекты", "Индивидуальный сценарий", "Световое шоу"]
     }
   ];
 
@@ -100,20 +100,27 @@ const Index = () => {
       name: "Анна Соколова",
       event: "Свадьба",
       rating: 5,
-      text: "Невероятное шоу! Все гости были в восторге. Профессионализм на высшем уровне, каждый элемент продуман до мелочей. Спасибо за незабываемый вечер!"
+      text: "Церемония зажжения сердец стала изюминкой нашей свадьбы! Все гости были в восторге. Профессионализм на высшем уровне, каждый элемент продуман до мелочей. Спасибо за незабываемый вечер!"
     },
     {
       name: "Дмитрий Петров",
       event: "Корпоратив",
       rating: 5,
-      text: "Заказывали выступление на корпоративное мероприятие. Артисты создали потрясающую атмосферу, коллеги до сих пор обсуждают шоу. Рекомендую!"
+      text: "Заказывали уличный перформанс на корпоративное мероприятие. OUTCAST создали невероятную атмосферу, коллеги до сих пор обсуждают огненное шоу. Мобильные, профессиональные, зрелищные!"
     },
     {
       name: "Елена Морозова",
       event: "День рождения",
       rating: 5,
-      text: "Организовывали праздник для дочери. Огненное шоу стало главным событием вечера! Безопасно, зрелищно, профессионально. Огромное спасибо команде OUTCAST!"
+      text: "Заказывали полное шоу для юбилея. Огненное представление стало главным событием вечера! Безопасно, зрелищно, каждый элемент продуман. Огромное спасибо команде OUTCAST!"
     }
+  ];
+
+  const stats = [
+    { value: "500+", label: "Выступлений" },
+    { value: "7+", label: "Лет опыта" },
+    { value: "100%", label: "Довольных клиентов" },
+    { value: "24/7", label: "Поддержка" }
   ];
 
   return (
@@ -198,8 +205,11 @@ const Index = () => {
             <p className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
               FIRE SHOW
             </p>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Профессиональное огненное шоу в Челябинске
+            <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-2xl mx-auto">
+              Завораживающее зрелище уличного перформанса
+            </p>
+            <p className="text-lg md:text-xl text-muted-foreground/80 mb-8 max-w-2xl mx-auto">
+              Мы делаем не просто шоу... мы задаём атмосферу! 
             </p>
             <div className="flex flex-wrap gap-4 justify-center mb-12">
               <div className="flex items-center gap-2 text-lg">
@@ -336,6 +346,26 @@ const Index = () => {
                 </div>
               </CardContent>
             </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-gradient-to-b from-card to-black">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+            {stats.map((stat, index) => (
+              <div 
+                key={index} 
+                className="text-center p-6 rounded-lg bg-card/50 border border-primary/20 hover:border-primary/50 transition-all hover-scale"
+              >
+                <div className="text-4xl md:text-5xl font-black text-primary mb-2 fire-glow">
+                  {stat.value}
+                </div>
+                <div className="text-sm md:text-base text-muted-foreground">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
