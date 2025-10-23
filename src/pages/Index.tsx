@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -13,6 +13,33 @@ const Index = () => {
     phone: '',
     message: ''
   });
+
+  useEffect(() => {
+    const createParticle = () => {
+      const particle = document.createElement('div');
+      particle.className = 'fire-particle';
+      const left = Math.random() * 100;
+      const duration = 3 + Math.random() * 4;
+      const xOffset = (Math.random() - 0.5) * 100;
+      const size = 2 + Math.random() * 4;
+      
+      particle.style.left = `${left}%`;
+      particle.style.animationDuration = `${duration}s`;
+      particle.style.setProperty('--x-offset', `${xOffset}px`);
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.animationDelay = `${Math.random() * 2}s`;
+      
+      const container = document.getElementById('particles-container');
+      if (container) {
+        container.appendChild(particle);
+        setTimeout(() => particle.remove(), duration * 1000);
+      }
+    };
+
+    const interval = setInterval(createParticle, 200);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -95,6 +122,7 @@ const Index = () => {
 
       <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-primary/10 to-black"></div>
+        <div id="particles-container" className="absolute inset-0 overflow-hidden"></div>
         <div className="absolute inset-0 opacity-30">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/30 rounded-full blur-[120px] animate-float"></div>
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/20 rounded-full blur-[120px] animate-float" style={{ animationDelay: '1s' }}></div>
