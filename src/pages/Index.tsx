@@ -59,10 +59,20 @@ const Index = () => {
   const programs = [
     {
       title: "Постановка «MYSTIC»",
-      description: "Романтичное огненное шоу для свадеб и торжеств",
-      duration: "15-20 минут",
+      description: "Парное выступление, наполненное огнём, искрами и драйвом современной музыки",
+      duration: "6 минут",
       price: "от 12 000 ₽",
-      features: ["Файер-шоу", "Огненные сердца", "Романтичная хореография", "Музыкальное сопровождение"]
+      features: [
+        "2 артиста",
+        "3 вида огненного реквизита",
+        "3 вида пиротехнического реквизита",
+        "Огненные чаши и сценический свет",
+        "Акустическая система 500Вт",
+        "Подготовка и демонтаж площадки",
+        "Работа техника на площадке",
+        "Трансфер артистов (г. Челябинск)"
+      ],
+      suitable: "Подходит для детских и корпоративных праздников, юбилеев, дней рождения, свадеб"
     },
     {
       title: "Уличный перформанс",
@@ -271,6 +281,14 @@ const Index = () => {
                   </div>
                 </CardContent>
                 <CardFooter className="flex-col items-start gap-4">
+                  {program.suitable && (
+                    <div className="w-full p-3 bg-primary/10 rounded-lg border border-primary/20 mb-2">
+                      <p className="text-sm text-muted-foreground">
+                        <Icon name="Sparkles" size={16} className="inline text-primary mr-2" />
+                        {program.suitable}
+                      </p>
+                    </div>
+                  )}
                   <div className="text-3xl font-bold text-primary">{program.price}</div>
                   <Button 
                     onClick={() => scrollToSection('contacts')}
