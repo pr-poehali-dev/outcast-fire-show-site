@@ -61,7 +61,7 @@ const Index = () => {
       title: "Постановка «MYSTIC»",
       description: "Парное выступление, наполненное огнём, искрами и драйвом современной музыки",
       duration: "6 минут",
-      price: "от 12 000 ₽",
+      price: "от 18 000 ₽",
       features: [
         "2 артиста",
         "3 вида огненного реквизита",
@@ -79,6 +79,7 @@ const Index = () => {
       description: "Максимально современный, энергичный номер. Это взрыв спецэффектов в танце с огнем и пиротехникой. Современная хореография, популярная музыка - этот номер сформирован так, чтобы зритель получил WOW эффект",
       duration: "10 минут",
       price: "от 30 000 ₽",
+      videoUrl: "https://vk.com/wall-203229964_930",
       features: [
         "4 артиста на площадке",
         "5 видов огненного реквизита",
@@ -290,6 +291,17 @@ const Index = () => {
                       <Icon name="Clock" size={18} className="text-primary" />
                       <span>{program.duration}</span>
                     </div>
+                    {program.videoUrl && (
+                      <a 
+                        href={program.videoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 p-3 bg-primary/10 rounded-lg border border-primary/20 hover:bg-primary/20 transition-all group"
+                      >
+                        <Icon name="Play" size={18} className="text-primary group-hover:scale-110 transition-transform" />
+                        <span className="text-sm font-medium">Смотреть видео-пример</span>
+                      </a>
+                    )}
                     <div className="space-y-2">
                       {program.features.map((feature, idx) => (
                         <div key={idx} className="flex items-start gap-2">
