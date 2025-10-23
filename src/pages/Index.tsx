@@ -458,6 +458,41 @@ const Index = () => {
                   <p className="text-muted-foreground">Ежедневно, 10:00 - 22:00</p>
                 </div>
               </div>
+
+              <div className="pt-4">
+                <h4 className="font-semibold mb-4">Мы в социальных сетях</h4>
+                <div className="flex gap-3">
+                  <a 
+                    href="https://vk.com/fireshow74_outcast_ognennoe_show" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary/30 transition-all hover-scale"
+                    aria-label="VKontakte"
+                  >
+                    <svg className="w-6 h-6 text-primary" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.15 14.77c-.41.55-1.17.74-1.77.74-1.21 0-1.67-.47-2.67-1.47-.81-.81-1.18-1.18-1.86-1.18-.77 0-.89.11-1.15.51-.23.35-.38.95-.38 1.51 0 .34-.28.62-.75.62h-.98c-.78 0-3.23-.17-5.29-2.3C1.28 12.99.62 10.12.56 10c-.11-.31.07-.47.36-.47h2.03c.31 0 .42.16.54.39.12.24 1.27 3.02 1.97 3.74.13.14.22.18.31.18.11 0 .16-.06.22-.19V11.3c-.06-.93-.55-1.01-.55-1.33 0-.24.2-.49.53-.49h3.18c.26 0 .36.14.36.44v3.49c0 .26.12.36.19.36.11 0 .22-.1.41-.29 1.58-1.78 2.72-4.53 2.72-4.53.07-.14.2-.28.47-.28h2.03c.37 0 .45.19.37.44-.14.51-1.79 3.77-1.79 3.77-.1.18-.13.26 0 .47.09.14.37.36.56.57.76.76 1.35 1.39 1.5 1.82.16.43-.08.65-.46.65h-2.03z"/>
+                    </svg>
+                  </a>
+                  <a 
+                    href="https://instagram.com/outcast_fireshow" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary/30 transition-all hover-scale"
+                    aria-label="Instagram"
+                  >
+                    <Icon name="Instagram" size={24} className="text-primary" />
+                  </a>
+                  <a 
+                    href="https://wa.me/79000000000" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-12 h-12 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary/30 transition-all hover-scale"
+                    aria-label="WhatsApp"
+                  >
+                    <Icon name="MessageCircle" size={24} className="text-primary" />
+                  </a>
+                </div>
+              </div>
             </div>
 
             <Card className="bg-card border-primary/20">
@@ -510,18 +545,53 @@ const Index = () => {
 
       <footer className="bg-card border-t border-primary/20 py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <img 
-                src="https://cdn.poehali.dev/files/6542e7b2-83ab-46b5-8dee-6d7f743b92c4.jpg" 
-                alt="OUTCAST Logo" 
-                className="h-8 w-auto object-contain logo-animate cursor-pointer"
-                onClick={() => scrollToSection('home')}
-              />
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <img 
+                  src="https://cdn.poehali.dev/files/6542e7b2-83ab-46b5-8dee-6d7f743b92c4.jpg" 
+                  alt="OUTCAST Logo" 
+                  className="h-8 w-auto object-contain logo-animate cursor-pointer"
+                  onClick={() => scrollToSection('home')}
+                />
+              </div>
+              <div className="flex items-center gap-3">
+                <a 
+                  href="https://vk.com/fireshow74_outcast_ognennoe_show" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary/30 transition-all hover-scale"
+                  aria-label="VKontakte"
+                >
+                  <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.15 14.77c-.41.55-1.17.74-1.77.74-1.21 0-1.67-.47-2.67-1.47-.81-.81-1.18-1.18-1.86-1.18-.77 0-.89.11-1.15.51-.23.35-.38.95-.38 1.51 0 .34-.28.62-.75.62h-.98c-.78 0-3.23-.17-5.29-2.3C1.28 12.99.62 10.12.56 10c-.11-.31.07-.47.36-.47h2.03c.31 0 .42.16.54.39.12.24 1.27 3.02 1.97 3.74.13.14.22.18.31.18.11 0 .16-.06.22-.19V11.3c-.06-.93-.55-1.01-.55-1.33 0-.24.2-.49.53-.49h3.18c.26 0 .36.14.36.44v3.49c0 .26.12.36.19.36.11 0 .22-.1.41-.29 1.58-1.78 2.72-4.53 2.72-4.53.07-.14.2-.28.47-.28h2.03c.37 0 .45.19.37.44-.14.51-1.79 3.77-1.79 3.77-.1.18-.13.26 0 .47.09.14.37.36.56.57.76.76 1.35 1.39 1.5 1.82.16.43-.08.65-.46.65h-2.03z"/>
+                  </svg>
+                </a>
+                <a 
+                  href="https://instagram.com/outcast_fireshow" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary/30 transition-all hover-scale"
+                  aria-label="Instagram"
+                >
+                  <Icon name="Instagram" size={20} className="text-primary" />
+                </a>
+                <a 
+                  href="https://wa.me/79000000000" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center hover:bg-primary/30 transition-all hover-scale"
+                  aria-label="WhatsApp"
+                >
+                  <Icon name="MessageCircle" size={20} className="text-primary" />
+                </a>
+              </div>
             </div>
-            <p className="text-sm text-muted-foreground">
-              © 2024 OUTCAST. Все права защищены.
-            </p>
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground">
+                © 2024 OUTCAST FIRE SHOW. Огненное шоу в Челябинске. Все права защищены.
+              </p>
+            </div>
           </div>
         </div>
       </footer>
