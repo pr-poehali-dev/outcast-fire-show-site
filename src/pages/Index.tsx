@@ -95,6 +95,27 @@ const Index = () => {
     }
   ];
 
+  const testimonials = [
+    {
+      name: "Анна Соколова",
+      event: "Свадьба",
+      rating: 5,
+      text: "Невероятное шоу! Все гости были в восторге. Профессионализм на высшем уровне, каждый элемент продуман до мелочей. Спасибо за незабываемый вечер!"
+    },
+    {
+      name: "Дмитрий Петров",
+      event: "Корпоратив",
+      rating: 5,
+      text: "Заказывали выступление на корпоративное мероприятие. Артисты создали потрясающую атмосферу, коллеги до сих пор обсуждают шоу. Рекомендую!"
+    },
+    {
+      name: "Елена Морозова",
+      event: "День рождения",
+      rating: 5,
+      text: "Организовывали праздник для дочери. Огненное шоу стало главным событием вечера! Безопасно, зрелищно, профессионально. Огромное спасибо команде OUTCAST!"
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-black">
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-primary/20">
@@ -319,7 +340,45 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contacts" className="py-20 bg-black">
+      <section id="testimonials" className="py-20 bg-black">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Отзывы клиентов</h2>
+          <p className="text-center text-muted-foreground mb-12">
+            Что говорят о нас наши клиенты
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {testimonials.map((testimonial, index) => (
+              <Card 
+                key={index}
+                className="bg-card border-primary/20 hover:border-primary/50 transition-all hover-scale"
+              >
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-4">
+                    <div>
+                      <CardTitle className="text-xl">{testimonial.name}</CardTitle>
+                      <CardDescription className="text-sm">{testimonial.event}</CardDescription>
+                    </div>
+                    <div className="flex gap-1">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Icon key={i} name="Star" size={16} className="text-secondary fill-secondary" />
+                      ))}
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex items-start gap-2 mb-4">
+                    <Icon name="Quote" size={24} className="text-primary/50 flex-shrink-0" />
+                    <p className="text-muted-foreground italic">{testimonial.text}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" className="py-20 bg-gradient-to-b from-black to-card">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Контакты</h2>
           <p className="text-center text-muted-foreground mb-12">
