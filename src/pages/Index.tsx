@@ -152,16 +152,24 @@ const Index = () => {
 
   const gallery = [
     {
-      url: "https://cdn.poehali.dev/projects/72a14de5-7353-4caf-b47a-98d3caa2c09a/files/5ae5f14a-f713-418d-9196-ad5a311e7092.jpg",
-      title: "Огненное жонглирование"
+      url: "https://cdn.poehali.dev/files/d524fd97-2aa3-484d-ae46-9fa3748e5790.jpg",
+      title: "Церемония зажжения огненного сердца"
     },
     {
-      url: "https://cdn.poehali.dev/projects/72a14de5-7353-4caf-b47a-98d3caa2c09a/files/340d91a4-a250-4cdd-8f36-110cb08226e7.jpg",
-      title: "Poi performance"
+      url: "https://cdn.poehali.dev/files/10e15dc7-2136-468b-a52f-6e4c74eda592.jpg",
+      title: "Огненное выступление артистов"
     },
     {
-      url: "https://cdn.poehali.dev/projects/72a14de5-7353-4caf-b47a-98d3caa2c09a/files/77ec3b07-07cf-4073-9a1b-bb68b6c3ecfd.jpg",
-      title: "Fire staff"
+      url: "https://cdn.poehali.dev/files/b2bf0036-be42-46c9-97af-f15b12d8cbd3.jpg",
+      title: "Постановка с пиротехникой"
+    },
+    {
+      url: "https://cdn.poehali.dev/files/656fa87f-60dd-485f-9d4e-8c2bc97e6455.jpg",
+      title: "Огненные фонтаны и спецэффекты"
+    },
+    {
+      url: "https://cdn.poehali.dev/files/f3175266-0801-4d7b-9dd0-690e757ef3ad.jpg",
+      title: "Шоу с цветными дымами"
     }
   ];
 
@@ -444,7 +452,7 @@ const Index = () => {
             Моменты наших выступлений
           </p>
           
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {gallery.map((image, index) => (
               <div 
                 key={index}
