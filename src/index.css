@@ -145,4 +145,13 @@
     pointer-events: none;
     animation: particle-rise linear infinite;
   }
+
+  .gallery-image {
+    filter: brightness(0.95) contrast(1.15) saturate(1.2);
+    transition: filter 0.3s ease;
+  }
+
+  .gallery-image:hover {
+    filter: brightness(1.05) contrast(1.2) saturate(1.3);
+  }
 }
