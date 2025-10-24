@@ -215,6 +215,22 @@ const Index = () => {
         "Работа пиротехника на площадке"
       ],
       suitable: "Идеально для предложений руки и сердца, признаний в любви, юбилеев"
+    },
+    {
+      title: "Гендер-пати 🎀💙",
+      description: "Яркое огненно-пиротехническое шоу для раскрытия пола будущего малыша",
+      duration: "По запросу",
+      price: "от 15 000 ₽",
+      videoUrl: "https://vk.com/wall-203229964_900",
+      features: [
+        "Цветной дым (розовый или синий)",
+        "Огненные символы Д и М (загорится нужный)",
+        "Веерный дневной отстрел (розовый или синий)",
+        "Музыкальное сопровождение",
+        "Работа пиротехника",
+        "Огнетушитель (розовый или синий)"
+      ],
+      suitable: "Незабываемое раскрытие пола ребенка для будущих родителей и их близких"
     }
   ];
 
@@ -230,6 +246,11 @@ const Index = () => {
     {
       url: "https://cdn.poehali.dev/files/b2bf0036-be42-46c9-97af-f15b12d8cbd3.jpg",
       title: "Постановка с пиротехникой"
+    },
+    {
+      url: "https://i.mycdn.me/getVideoPreview?id=7990578514497&idx=7&type=39&tkn=eWOulkag1uksE0oqIkUN-QKtPj0&fn=vid_x",
+      title: "Огнепады - золотые каскады искр",
+      videoUrl: "https://vk.com/wall-203229964_900"
     },
     {
       url: "https://cdn.poehali.dev/files/656fa87f-60dd-485f-9d4e-8c2bc97e6455.jpg",
@@ -523,7 +544,7 @@ const Index = () => {
               >
                 <CardHeader>
                   <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mb-4 animate-flicker">
-                    <Icon name={index === 0 ? "Heart" : index === 2 ? "Droplets" : index === 3 ? "Type" : "Sparkles"} size={24} />
+                    <Icon name={index === 0 ? "Heart" : index === 2 ? "Droplets" : index === 3 ? "Type" : index === 4 ? "Baby" : "Sparkles"} size={24} />
                   </div>
                   <CardTitle className="text-2xl">{installation.title}</CardTitle>
                   <CardDescription className="text-base">{installation.description}</CardDescription>
@@ -607,17 +628,43 @@ const Index = () => {
                 key={index}
                 className="group relative aspect-square overflow-hidden rounded-lg border border-primary/20 hover:border-primary/50 transition-all hover-scale"
               >
-                <img 
-                  src={image.url} 
-                  alt={image.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover gallery-image transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-bold">{image.title}</h3>
-                  </div>
-                </div>
+                {image.videoUrl ? (
+                  <a 
+                    href={image.videoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full h-full relative"
+                  >
+                    <img 
+                      src={image.url} 
+                      alt={image.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover gallery-image transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/40 transition-colors">
+                      <div className="w-16 h-16 bg-primary/90 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Icon name="Play" size={32} className="text-white ml-1" />
+                      </div>
+                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
+                      <h3 className="text-xl font-bold">{image.title}</h3>
+                    </div>
+                  </a>
+                ) : (
+                  <>
+                    <img 
+                      src={image.url} 
+                      alt={image.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover gallery-image transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 className="text-xl font-bold">{image.title}</h3>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>
