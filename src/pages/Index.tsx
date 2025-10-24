@@ -14,6 +14,13 @@ const Index = () => {
     message: ''
   });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showCalculator, setShowCalculator] = useState(false);
+  const [calculatorData, setCalculatorData] = useState({
+    programType: 'mystic',
+    duration: '6',
+    artists: '2',
+    distance: '0'
+  });
 
   useEffect(() => {
     const createParticle = () => {
@@ -54,6 +61,18 @@ const Index = () => {
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
     setIsMobileMenuOpen(false);
+  };
+
+  const calculatePrice = () => {
+    const basePrice = calculatorData.programType === 'mystic' ? 18000 : 
+                      calculatorData.programType === 'trailer' ? 30000 : 32000;
+    const durationMultiplier = parseInt(calculatorData.duration) / 6;
+    const artistsBonus = (parseInt(calculatorData.artists) - 2) * 5000;
+    const distanceBonus = parseInt(calculatorData.distance) > 50 ? 
+                          (parseInt(calculatorData.distance) - 50) * 50 : 0;
+    
+    const total = Math.max(basePrice * durationMultiplier + artistsBonus + distanceBonus, basePrice);
+    return Math.round(total);
   };
 
   const programs = [
@@ -247,19 +266,36 @@ const Index = () => {
       name: "Анна Соколова",
       event: "Свадьба",
       rating: 5,
-      text: "Церемония зажжения сердец стала изюминкой нашей свадьбы! Все гости были в восторге. Профессионализм на высшем уровне, каждый элемент продуман до мелочей. Спасибо за незабываемый вечер!"
+      text: "Церемония зажжения сердец стала изюминкой нашей свадьбы! Все гости были в восторге. Профессионализм на высшем уровне, каждый элемент продуман до мелочей. Спасибо за незабываемый вечер!",
+      photo: "https://cdn.poehali.dev/files/d524fd97-2aa3-484d-ae46-9fa3748e5790.jpg"
     },
     {
       name: "Дмитрий Петров",
       event: "Корпоратив",
       rating: 5,
-      text: "Заказывали уличный перформанс на корпоративное мероприятие. OUTCAST создали невероятную атмосферу, коллеги до сих пор обсуждают огненное шоу. Мобильные, профессиональные, зрелищные!"
+      text: "Заказывали уличный перформанс на корпоративное мероприятие. OUTCAST создали невероятную атмосферу, коллеги до сих пор обсуждают огненное шоу. Мобильные, профессиональные, зрелищные!",
+      photo: "https://cdn.poehali.dev/files/282a58c5-553c-4af6-b6e2-c9bf922c59c0.jpg"
     },
     {
       name: "Елена Морозова",
       event: "День рождения",
       rating: 5,
-      text: "Заказывали полное шоу для юбилея. Огненное представление стало главным событием вечера! Безопасно, зрелищно, каждый элемент продуман. Огромное спасибо команде OUTCAST!"
+      text: "Заказывали полное шоу для юбилея. Огненное представление стало главным событием вечера! Безопасно, зрелищно, каждый элемент продуман. Огромное спасибо команде OUTCAST!",
+      photo: "https://cdn.poehali.dev/files/eea5efad-8935-495e-b7c3-72a69ac50926.jpg"
+    },
+    {
+      name: "Михаил Иванов",
+      event: "Юбилей компании",
+      rating: 5,
+      text: "Выступление было потрясающим! Сотрудники в восторге, а гости до сих пор спрашивают контакты. Очень красивое и профессиональное шоу, рекомендую!",
+      photo: "https://cdn.poehali.dev/files/5e28f939-32a0-48c9-bc22-4e027c463c35.jpg"
+    },
+    {
+      name: "Ольга Смирнова",
+      event: "День рождения",
+      rating: 5,
+      text: "Невероятное зрелище! Ребята настоящие профессионалы. Весь праздник прошел на высшем уровне. Спасибо за яркие эмоции и незабываемые впечатления!",
+      photo: "https://cdn.poehali.dev/files/f96a2f13-fff3-4d64-8cb3-5ad8fd87d693.jpg"
     }
   ];
 
@@ -272,7 +308,24 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black">
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-primary/20">
+      <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-black border-b border-primary/20 p-2">
+        <div className="flex items-center justify-center gap-2">
+          <a href="tel:+79518152553" className="flex-1 flex items-center justify-center gap-2 bg-primary/20 hover:bg-primary/30 py-2 px-3 rounded-lg transition-colors">
+            <Icon name="Phone" size={16} className="text-primary" />
+            <span className="text-sm font-semibold">Позвонить</span>
+          </a>
+          <a href="https://wa.me/79085740813" className="flex-1 flex items-center justify-center gap-2 bg-[#25D366]/20 hover:bg-[#25D366]/30 py-2 px-3 rounded-lg transition-colors">
+            <Icon name="MessageCircle" size={16} className="text-[#25D366]" />
+            <span className="text-sm font-semibold">WhatsApp</span>
+          </a>
+          <a href="https://vk.com/im?entrypoint=community_page&media=&sel=-203229964" className="flex-1 flex items-center justify-center gap-2 bg-blue-600/20 hover:bg-blue-600/30 py-2 px-3 rounded-lg transition-colors">
+            <Icon name="Send" size={16} className="text-blue-400" />
+            <span className="text-sm font-semibold">VK</span>
+          </a>
+        </div>
+      </div>
+
+      <nav className="fixed top-0 md:top-0 left-0 right-0 z-40 bg-black/80 backdrop-blur-md border-b border-primary/20 mt-12 md:mt-0">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -340,7 +393,7 @@ const Index = () => {
         </div>
       </nav>
 
-      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-20">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-primary/10 to-black"></div>
         <div id="particles-container" className="absolute inset-0 overflow-hidden"></div>
         <div className="absolute inset-0 opacity-30">
@@ -557,6 +610,7 @@ const Index = () => {
                 <img 
                   src={image.url} 
                   alt={image.title}
+                  loading="lazy"
                   className="w-full h-full object-cover gallery-image transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -660,8 +714,19 @@ const Index = () => {
             {testimonials.map((testimonial, index) => (
               <Card 
                 key={index}
-                className="bg-card border-primary/20 hover:border-primary/50 transition-all hover-scale"
+                className="bg-card border-primary/20 hover:border-primary/50 transition-all hover-scale overflow-hidden"
               >
+                {testimonial.photo && (
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={testimonial.photo} 
+                      alt={testimonial.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent"></div>
+                  </div>
+                )}
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
                     <div>
@@ -676,11 +741,21 @@ const Index = () => {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="flex items-start gap-2 mb-4">
+                  <div className="flex items-start gap-2">
                     <Icon name="Quote" size={24} className="text-primary/50 flex-shrink-0" />
                     <p className="text-muted-foreground italic">{testimonial.text}</p>
                   </div>
                 </CardContent>
+                <CardFooter className="pt-0">
+                  <a 
+                    href="https://vk.com/topic-203229964_47521361"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-primary hover:underline"
+                  >
+                    Больше отзывов в VK →
+                  </a>
+                </CardFooter>
               </Card>
             ))}
           </div>
@@ -822,11 +897,145 @@ const Index = () => {
         </div>
       </section>
 
+      <section className="py-20 bg-gradient-to-b from-card to-black">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Калькулятор стоимости</h2>
+          <p className="text-center text-muted-foreground mb-12">
+            Рассчитайте примерную стоимость выступления
+          </p>
+          
+          <Card className="max-w-2xl mx-auto bg-card border-primary/20">
+            <CardContent className="p-8">
+              <div className="space-y-6">
+                <div>
+                  <label className="block text-sm font-semibold mb-3">Тип программы</label>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    {[
+                      { value: 'mystic', label: 'MYSTIC', price: '18000₽' },
+                      { value: 'trailer', label: 'TRAILER', price: '30000₽' },
+                      { value: 'shamanism', label: 'SHAMANISM', price: '32000₽' }
+                    ].map((prog) => (
+                      <button
+                        key={prog.value}
+                        onClick={() => setCalculatorData({...calculatorData, programType: prog.value})}
+                        className={`p-4 rounded-lg border-2 transition-all ${
+                          calculatorData.programType === prog.value 
+                            ? 'border-primary bg-primary/20' 
+                            : 'border-border hover:border-primary/50'
+                        }`}
+                      >
+                        <div className="font-bold">{prog.label}</div>
+                        <div className="text-sm text-muted-foreground">от {prog.price}</div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-3">Длительность (минут)</label>
+                  <Input
+                    type="number"
+                    min="6"
+                    max="30"
+                    value={calculatorData.duration}
+                    onChange={(e) => setCalculatorData({...calculatorData, duration: e.target.value})}
+                    className="bg-muted border-border"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-3">Количество артистов</label>
+                  <Input
+                    type="number"
+                    min="2"
+                    max="6"
+                    value={calculatorData.artists}
+                    onChange={(e) => setCalculatorData({...calculatorData, artists: e.target.value})}
+                    className="bg-muted border-border"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-3">Удаленность площадки от Челябинска (км)</label>
+                  <Input
+                    type="number"
+                    min="0"
+                    max="500"
+                    value={calculatorData.distance}
+                    onChange={(e) => setCalculatorData({...calculatorData, distance: e.target.value})}
+                    className="bg-muted border-border"
+                  />
+                </div>
+
+                <div className="pt-6 border-t border-border">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-lg font-semibold">Примерная стоимость:</span>
+                    <span className="text-4xl font-bold text-primary">{calculatePrice().toLocaleString('ru-RU')} ₽</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    <Icon name="Info" size={16} className="inline mr-2 text-primary" />
+                    Итоговая стоимость рассчитывается индивидуально после консультации
+                  </p>
+                  <Button 
+                    onClick={() => window.open('https://vk.com/im?entrypoint=community_page&media=&sel=-203229964', '_blank')}
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90"
+                  >
+                    <Icon name="MessageCircle" size={18} className="mr-2" />
+                    Получить точный расчет
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gradient-to-b from-black to-card">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Безопасность превыше всего</h2>
+          <p className="text-center text-muted-foreground mb-12">
+            Мы работаем по всем стандартам безопасности
+          </p>
+          
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            <Card className="bg-card border-primary/20 text-center">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Shield" size={32} className="text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Сертифицированные артисты</h3>
+                <p className="text-muted-foreground">Все артисты прошли обучение и имеют 7+ лет опыта работы с огнем</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card border-primary/20 text-center">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="FileCheck" size={32} className="text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Соблюдение норм</h3>
+                <p className="text-muted-foreground">Работаем строго по нормам пожарной безопасности и техники безопасности</p>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-card border-primary/20 text-center">
+              <CardContent className="p-8">
+                <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Ambulance" size={32} className="text-primary" />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Страхование</h3>
+                <p className="text-muted-foreground">Полное страхование ответственности и наличие средств пожаротушения</p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       <a
         href="https://wa.me/79085740813"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] hover:bg-[#20BA5A] rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110 animate-pulse"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 md:w-16 md:h-16 bg-[#25D366] hover:bg-[#20BA5A] rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
         aria-label="Написать в WhatsApp"
       >
         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
