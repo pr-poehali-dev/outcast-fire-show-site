@@ -14,6 +14,7 @@ const Index = () => {
     message: ''
   });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const [showCalculator, setShowCalculator] = useState(false);
   const [calculatorData, setCalculatorData] = useState({
     programType: 'mystic',
@@ -48,6 +49,29 @@ const Index = () => {
     const interval = setInterval(createParticle, 200);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 500);
+
+      const elements = document.querySelectorAll('.scroll-reveal');
+      elements.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const isVisible = rect.top < window.innerHeight * 0.85;
+        if (isVisible) {
+          el.classList.add('revealed');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -327,6 +351,33 @@ const Index = () => {
     { value: "24/7", label: "Поддержка" }
   ];
 
+  const faq = [
+    {
+      question: "Насколько безопасно огненное шоу?",
+      answer: "Безопасность — наш главный приоритет. Все артисты имеют многолетний опыт работы с огнём, используется профессиональное оборудование. На площадке всегда присутствует техник безопасности с огнетушителем. Мы соблюдаем все требования пожарной безопасности и имеем необходимые документы."
+    },
+    {
+      question: "Можно ли проводить шоу в плохую погоду?",
+      answer: "Мы можем выступать при небольшом дожде, но сильный ветер (более 10 м/с) или ливень могут стать препятствием по соображениям безопасности. В таких случаях мы предложим перенос выступления или адаптируем программу под условия (например, закрытое помещение с высокими потолками)."
+    },
+    {
+      question: "Какие требования к площадке для выступления?",
+      answer: "Для огненного шоу нужна ровная площадка размером минимум 4×4 метра, свободная от легковоспламеняющихся материалов. Зрители должны находиться на расстоянии не менее 3 метров от зоны выступления. Для закрытых помещений требуется высота потолков от 4 метров и хорошая вентиляция."
+    },
+    {
+      question: "Как происходит оплата?",
+      answer: "Для бронирования даты требуется предоплата 30%. Оставшаяся сумма оплачивается в день выступления наличными или по безналичному расчёту. Мы предоставляем все необходимые документы для юридических лиц."
+    },
+    {
+      question: "За сколько нужно бронировать выступление?",
+      answer: "Рекомендуем бронировать за 2-4 недели, особенно в сезон (май-сентябрь). В некоторых случаях можем организовать выступление за 3-5 дней. Свяжитесь с нами, и мы проверим доступность на нужную дату."
+    },
+    {
+      question: "Можно ли добавить индивидуальные элементы в шоу?",
+      answer: "Конечно! Мы можем адаптировать программу под ваши пожелания: добавить определённую музыку, создать тематическое выступление, включить огненные надписи или логотипы. Обсудим детали при заказе."
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-black">
       <div className="md:hidden fixed top-0 left-0 right-0 z-50 bg-black border-b border-primary/20 p-2">
@@ -366,6 +417,35 @@ const Index = () => {
               <button onClick={() => scrollToSection('contacts')} className="hover:text-primary transition-colors">Контакты</button>
             </div>
             <div className="flex items-center gap-4">
+              <div className="hidden lg:flex items-center gap-2">
+                <a 
+                  href="https://vk.com/im?entrypoint=community_page&media=&sel=-203229964" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 hover:bg-blue-600/20 rounded-lg transition-colors group"
+                  aria-label="VK"
+                >
+                  <Icon name="Send" size={20} className="text-blue-400 group-hover:scale-110 transition-transform" />
+                </a>
+                <a 
+                  href="https://wa.me/79518152553" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 hover:bg-green-600/20 rounded-lg transition-colors group"
+                  aria-label="WhatsApp"
+                >
+                  <Icon name="MessageCircle" size={20} className="text-green-400 group-hover:scale-110 transition-transform" />
+                </a>
+                <a 
+                  href="https://t.me/+79518152553" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 hover:bg-sky-600/20 rounded-lg transition-colors group"
+                  aria-label="Telegram"
+                >
+                  <Icon name="Send" size={20} className="text-sky-400 group-hover:scale-110 transition-transform" />
+                </a>
+              </div>
               <Button onClick={() => window.open('https://vk.com/im?entrypoint=community_page&media=&sel=-203229964', '_blank')} className="hidden md:flex bg-gradient-to-r from-primary to-accent hover:opacity-90">
                 Заказать шоу
               </Button>
@@ -458,7 +538,50 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="programs" className="py-20 bg-gradient-to-b from-black to-card">
+      <section className="py-20 bg-gradient-to-b from-black to-card scroll-reveal">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-4 gap-8 text-center">
+            <div className="group">
+              <div className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:scale-110 transition-transform">
+                500+
+              </div>
+              <div className="text-lg text-muted-foreground">
+                <Icon name="Flame" size={24} className="inline mb-1 text-primary" />
+                <br />Зажигательных шоу
+              </div>
+            </div>
+            <div className="group">
+              <div className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:scale-110 transition-transform">
+                10+
+              </div>
+              <div className="text-lg text-muted-foreground">
+                <Icon name="Award" size={24} className="inline mb-1 text-primary" />
+                <br />Лет опыта
+              </div>
+            </div>
+            <div className="group">
+              <div className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:scale-110 transition-transform">
+                1000+
+              </div>
+              <div className="text-lg text-muted-foreground">
+                <Icon name="Heart" size={24} className="inline mb-1 text-primary" />
+                <br />Довольных клиентов
+              </div>
+            </div>
+            <div className="group">
+              <div className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:scale-110 transition-transform">
+                100%
+              </div>
+              <div className="text-lg text-muted-foreground">
+                <Icon name="Shield" size={24} className="inline mb-1 text-primary" />
+                <br />Безопасность
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="programs" className="py-20 bg-gradient-to-b from-card to-black scroll-reveal">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Наши программы</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -529,7 +652,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="installations" className="py-20 bg-black">
+      <section id="installations" className="py-20 bg-black scroll-reveal">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Инсталляции</h2>
           <p className="text-center text-muted-foreground mb-12">
@@ -615,7 +738,100 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="gallery" className="py-20 bg-card">
+      <section className="py-20 bg-gradient-to-b from-black to-card scroll-reveal">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Калькулятор стоимости</h2>
+          <p className="text-center text-muted-foreground mb-12">
+            Рассчитайте примерную стоимость выступления
+          </p>
+          
+          <Card className="max-w-2xl mx-auto bg-card border-primary/20">
+            <CardContent className="p-8">
+              <div className="space-y-6">
+                <div>
+                  <label className="block text-sm font-semibold mb-3">Тип программы</label>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                    {[
+                      { value: 'mystic', label: 'MYSTIC', price: '18000₽' },
+                      { value: 'trailer', label: 'TRAILER', price: '30000₽' },
+                      { value: 'shamanism', label: 'SHAMANISM', price: '32000₽' }
+                    ].map((prog) => (
+                      <button
+                        key={prog.value}
+                        onClick={() => setCalculatorData({...calculatorData, programType: prog.value})}
+                        className={`p-4 rounded-lg border-2 transition-all ${
+                          calculatorData.programType === prog.value 
+                            ? 'border-primary bg-primary/20' 
+                            : 'border-border hover:border-primary/50'
+                        }`}
+                      >
+                        <div className="font-bold">{prog.label}</div>
+                        <div className="text-sm text-muted-foreground">от {prog.price}</div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-3">Длительность (минут)</label>
+                  <Input
+                    type="number"
+                    min="6"
+                    max="30"
+                    value={calculatorData.duration}
+                    onChange={(e) => setCalculatorData({...calculatorData, duration: e.target.value})}
+                    className="bg-muted border-border"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-3">Количество артистов</label>
+                  <Input
+                    type="number"
+                    min="2"
+                    max="6"
+                    value={calculatorData.artists}
+                    onChange={(e) => setCalculatorData({...calculatorData, artists: e.target.value})}
+                    className="bg-muted border-border"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold mb-3">Удаленность площадки от Челябинска (км)</label>
+                  <Input
+                    type="number"
+                    min="0"
+                    max="500"
+                    value={calculatorData.distance}
+                    onChange={(e) => setCalculatorData({...calculatorData, distance: e.target.value})}
+                    className="bg-muted border-border"
+                  />
+                </div>
+
+                <div className="pt-6 border-t border-border">
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-lg font-semibold">Примерная стоимость:</span>
+                    <span className="text-4xl font-bold text-primary">{calculatePrice().toLocaleString('ru-RU')} ₽</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    <Icon name="Info" size={16} className="inline mr-2 text-primary" />
+                    Итоговая стоимость рассчитывается индивидуально после консультации
+                  </p>
+                  <Button 
+                    onClick={() => window.open('https://vk.com/im?entrypoint=community_page&media=&sel=-203229964', '_blank')}
+                    className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90"
+                  >
+                    <Icon name="MessageCircle" size={18} className="mr-2" />
+                    Получить точный расчет
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section id="gallery" className="py-20 bg-gradient-to-b from-card to-black scroll-reveal">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Галерея</h2>
           <p className="text-center text-muted-foreground mb-12">
@@ -671,7 +887,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="prices" className="py-20 bg-gradient-to-b from-card to-black">
+      <section id="prices" className="py-20 bg-gradient-to-b from-card to-black scroll-reveal">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Цены</h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
@@ -750,7 +966,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="testimonials" className="py-20 bg-black">
+      <section id="testimonials" className="py-20 bg-black scroll-reveal">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Отзывы клиентов</h2>
           <p className="text-center text-muted-foreground mb-12">
@@ -809,7 +1025,34 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contacts" className="py-20 bg-gradient-to-b from-black to-card">
+      <section className="py-20 bg-gradient-to-b from-black to-card scroll-reveal">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Частые вопросы</h2>
+          <p className="text-center text-muted-foreground mb-12">
+            Ответы на популярные вопросы о fire show
+          </p>
+          
+          <div className="max-w-3xl mx-auto space-y-4">
+            {faq.map((item, index) => (
+              <Card key={index} className="bg-card border-primary/20 hover:border-primary/50 transition-all">
+                <CardHeader>
+                  <CardTitle className="text-xl flex items-start gap-3">
+                    <Icon name="HelpCircle" size={24} className="text-primary mt-1 flex-shrink-0" />
+                    {item.question}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed pl-9">
+                    {item.answer}
+                  </p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contacts" className="py-20 bg-gradient-to-b from-card to-black scroll-reveal">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Контакты</h2>
           <p className="text-center text-muted-foreground mb-12">
@@ -944,100 +1187,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-card to-black">
-        <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Калькулятор стоимости</h2>
-          <p className="text-center text-muted-foreground mb-12">
-            Рассчитайте примерную стоимость выступления
-          </p>
-          
-          <Card className="max-w-2xl mx-auto bg-card border-primary/20">
-            <CardContent className="p-8">
-              <div className="space-y-6">
-                <div>
-                  <label className="block text-sm font-semibold mb-3">Тип программы</label>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-                    {[
-                      { value: 'mystic', label: 'MYSTIC', price: '18000₽' },
-                      { value: 'trailer', label: 'TRAILER', price: '30000₽' },
-                      { value: 'shamanism', label: 'SHAMANISM', price: '32000₽' }
-                    ].map((prog) => (
-                      <button
-                        key={prog.value}
-                        onClick={() => setCalculatorData({...calculatorData, programType: prog.value})}
-                        className={`p-4 rounded-lg border-2 transition-all ${
-                          calculatorData.programType === prog.value 
-                            ? 'border-primary bg-primary/20' 
-                            : 'border-border hover:border-primary/50'
-                        }`}
-                      >
-                        <div className="font-bold">{prog.label}</div>
-                        <div className="text-sm text-muted-foreground">от {prog.price}</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-3">Длительность (минут)</label>
-                  <Input
-                    type="number"
-                    min="6"
-                    max="30"
-                    value={calculatorData.duration}
-                    onChange={(e) => setCalculatorData({...calculatorData, duration: e.target.value})}
-                    className="bg-muted border-border"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-3">Количество артистов</label>
-                  <Input
-                    type="number"
-                    min="2"
-                    max="6"
-                    value={calculatorData.artists}
-                    onChange={(e) => setCalculatorData({...calculatorData, artists: e.target.value})}
-                    className="bg-muted border-border"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold mb-3">Удаленность площадки от Челябинска (км)</label>
-                  <Input
-                    type="number"
-                    min="0"
-                    max="500"
-                    value={calculatorData.distance}
-                    onChange={(e) => setCalculatorData({...calculatorData, distance: e.target.value})}
-                    className="bg-muted border-border"
-                  />
-                </div>
-
-                <div className="pt-6 border-t border-border">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-lg font-semibold">Примерная стоимость:</span>
-                    <span className="text-4xl font-bold text-primary">{calculatePrice().toLocaleString('ru-RU')} ₽</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    <Icon name="Info" size={16} className="inline mr-2 text-primary" />
-                    Итоговая стоимость рассчитывается индивидуально после консультации
-                  </p>
-                  <Button 
-                    onClick={() => window.open('https://vk.com/im?entrypoint=community_page&media=&sel=-203229964', '_blank')}
-                    className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90"
-                  >
-                    <Icon name="MessageCircle" size={18} className="mr-2" />
-                    Получить точный расчет
-                  </Button>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section className="py-20 bg-gradient-to-b from-black to-card">
+      <section className="py-20 bg-gradient-to-b from-black to-card scroll-reveal">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Безопасность превыше всего</h2>
           <p className="text-center text-muted-foreground mb-12">
@@ -1089,6 +1239,16 @@ const Index = () => {
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
         </svg>
       </a>
+
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center shadow-lg hover:shadow-primary/50 transition-all hover-scale"
+          aria-label="Наверх"
+        >
+          <Icon name="ArrowUp" size={24} />
+        </button>
+      )}
 
       <footer className="bg-card border-t border-primary/20 py-8">
         <div className="container mx-auto px-4">
