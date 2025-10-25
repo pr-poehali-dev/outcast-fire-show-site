@@ -463,24 +463,30 @@ const Index = () => {
             </div>
           </div>
           {isMobileMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 space-y-3 animate-fade-in">
-              <button onClick={() => scrollToSection('home')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
-                Главная
+            <div className="md:hidden mt-4 pb-4 space-y-2 animate-fade-in">
+              <button onClick={() => scrollToSection('home')} className="flex items-center gap-3 w-full text-left py-3 px-4 hover:bg-primary/20 rounded-lg transition-colors">
+                <Icon name="Home" size={18} className="text-primary" />
+                <span>Главная</span>
               </button>
-              <button onClick={() => scrollToSection('programs')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
-                Программы
+              <button onClick={() => scrollToSection('programs')} className="flex items-center gap-3 w-full text-left py-3 px-4 hover:bg-primary/20 rounded-lg transition-colors">
+                <Icon name="Flame" size={18} className="text-primary" />
+                <span>Программы</span>
               </button>
-              <button onClick={() => scrollToSection('installations')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
-                Инсталляции
+              <button onClick={() => scrollToSection('installations')} className="flex items-center gap-3 w-full text-left py-3 px-4 hover:bg-primary/20 rounded-lg transition-colors">
+                <Icon name="Sparkles" size={18} className="text-primary" />
+                <span>Инсталляции</span>
               </button>
-              <button onClick={() => scrollToSection('gallery')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
-                Галерея
+              <button onClick={() => scrollToSection('gallery')} className="flex items-center gap-3 w-full text-left py-3 px-4 hover:bg-primary/20 rounded-lg transition-colors">
+                <Icon name="Image" size={18} className="text-primary" />
+                <span>Галерея</span>
               </button>
-              <button onClick={() => scrollToSection('prices')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
-                Цены
+              <button onClick={() => scrollToSection('prices')} className="flex items-center gap-3 w-full text-left py-3 px-4 hover:bg-primary/20 rounded-lg transition-colors">
+                <Icon name="DollarSign" size={18} className="text-primary" />
+                <span>Цены</span>
               </button>
-              <button onClick={() => scrollToSection('contacts')} className="block w-full text-left py-2 px-4 hover:bg-primary/20 rounded-lg transition-colors">
-                Контакты
+              <button onClick={() => scrollToSection('contacts')} className="flex items-center gap-3 w-full text-left py-3 px-4 hover:bg-primary/20 rounded-lg transition-colors">
+                <Icon name="Mail" size={18} className="text-primary" />
+                <span>Контакты</span>
               </button>
               <Button 
                 onClick={() => window.open('https://vk.com/im?entrypoint=community_page&media=&sel=-203229964', '_blank')} 
@@ -504,34 +510,34 @@ const Index = () => {
         
         <div className="container mx-auto px-4 relative z-10 text-center">
           <div className="animate-fade-in">
-            <h1 className="text-6xl md:text-8xl font-black mb-6 fire-glow">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-black mb-4 md:mb-6 fire-glow">
               OUTCAST
             </h1>
-            <p className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
+            <p className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
               FIRE SHOW
             </p>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-3 md:mb-4 max-w-2xl mx-auto px-4">
               Завораживающее зрелище уличного перформанса
             </p>
-            <p className="text-lg md:text-xl text-muted-foreground/80 mb-8 max-w-2xl mx-auto">
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground/80 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
               Мы делаем не просто шоу... мы задаём атмосферу! 
             </p>
-            <div className="flex flex-wrap gap-4 justify-center mb-12">
-              <div className="flex items-center gap-2 text-lg">
-                <Icon name="MapPin" size={20} className="text-primary" />
+            <div className="flex flex-wrap gap-3 md:gap-4 justify-center mb-8 md:mb-12 text-sm sm:text-base md:text-lg">
+              <div className="flex items-center gap-2">
+                <Icon name="MapPin" size={18} className="text-primary" />
                 <span>Челябинск</span>
               </div>
-              <div className="flex items-center gap-2 text-lg">
-                <Icon name="Phone" size={20} className="text-primary" />
+              <div className="flex items-center gap-2">
+                <Icon name="Phone" size={18} className="text-primary" />
                 <a href="tel:+79518152553" className="hover:text-primary transition-colors">+7 (951) 815-25-53</a>
               </div>
             </div>
             <Button 
               size="lg" 
               onClick={() => window.open('https://vk.com/im?entrypoint=community_page&media=&sel=-203229964', '_blank')}
-              className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-lg px-8 py-6 hover-scale"
+              className="bg-gradient-to-r from-primary to-accent hover:opacity-90 text-base sm:text-lg px-6 sm:px-8 py-4 sm:py-6 hover-scale"
             >
-              <Icon name="Flame" size={24} className="mr-2" />
+              <Icon name="Flame" size={20} className="mr-2" />
               Заказать выступление
             </Button>
           </div>
@@ -540,40 +546,40 @@ const Index = () => {
 
       <section className="py-20 bg-gradient-to-b from-black to-card scroll-reveal">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
-            <div className="group">
-              <div className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:scale-110 transition-transform">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
+            <div className="group p-4 md:p-0">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-black mb-2 md:mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:scale-110 transition-transform">
                 500+
               </div>
-              <div className="text-lg text-muted-foreground">
-                <Icon name="Flame" size={24} className="inline mb-1 text-primary" />
+              <div className="text-sm sm:text-base md:text-lg text-muted-foreground">
+                <Icon name="Flame" size={20} className="inline mb-1 text-primary" />
                 <br />Зажигательных шоу
               </div>
             </div>
-            <div className="group">
-              <div className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:scale-110 transition-transform">
+            <div className="group p-4 md:p-0">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-black mb-2 md:mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:scale-110 transition-transform">
                 10+
               </div>
-              <div className="text-lg text-muted-foreground">
-                <Icon name="Award" size={24} className="inline mb-1 text-primary" />
+              <div className="text-sm sm:text-base md:text-lg text-muted-foreground">
+                <Icon name="Award" size={20} className="inline mb-1 text-primary" />
                 <br />Лет опыта
               </div>
             </div>
-            <div className="group">
-              <div className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:scale-110 transition-transform">
+            <div className="group p-4 md:p-0">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-black mb-2 md:mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:scale-110 transition-transform">
                 1000+
               </div>
-              <div className="text-lg text-muted-foreground">
-                <Icon name="Heart" size={24} className="inline mb-1 text-primary" />
+              <div className="text-sm sm:text-base md:text-lg text-muted-foreground">
+                <Icon name="Heart" size={20} className="inline mb-1 text-primary" />
                 <br />Довольных клиентов
               </div>
             </div>
-            <div className="group">
-              <div className="text-5xl md:text-6xl font-black mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:scale-110 transition-transform">
+            <div className="group p-4 md:p-0">
+              <div className="text-4xl sm:text-5xl md:text-6xl font-black mb-2 md:mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent group-hover:scale-110 transition-transform">
                 100%
               </div>
-              <div className="text-lg text-muted-foreground">
-                <Icon name="Shield" size={24} className="inline mb-1 text-primary" />
+              <div className="text-sm sm:text-base md:text-lg text-muted-foreground">
+                <Icon name="Shield" size={20} className="inline mb-1 text-primary" />
                 <br />Безопасность
               </div>
             </div>
@@ -581,14 +587,14 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="programs" className="py-20 bg-gradient-to-b from-card to-black scroll-reveal">
+      <section id="programs" className="py-12 md:py-20 bg-gradient-to-b from-card to-black scroll-reveal">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Наши программы</h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 md:mb-4 fire-glow">Наши программы</h2>
+          <p className="text-center text-sm sm:text-base text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto px-4">
             Выберите подходящую программу для вашего мероприятия
           </p>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {programs.map((program, index) => (
               <Card 
                 key={index} 
@@ -599,8 +605,8 @@ const Index = () => {
                   <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center mb-4 animate-flicker">
                     <Icon name="Flame" size={24} />
                   </div>
-                  <CardTitle className="text-2xl">{program.title}</CardTitle>
-                  <CardDescription className="text-base">{program.description}</CardDescription>
+                  <CardTitle className="text-xl sm:text-2xl">{program.title}</CardTitle>
+                  <CardDescription className="text-sm sm:text-base">{program.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -638,7 +644,7 @@ const Index = () => {
                       </p>
                     </div>
                   )}
-                  <div className="text-3xl font-bold text-primary">{program.price}</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-primary">{program.price}</div>
                   <Button 
                     onClick={() => window.open('https://vk.com/im?entrypoint=community_page&media=&sel=-203229964', '_blank')}
                     className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90"
@@ -652,10 +658,10 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="installations" className="py-20 bg-black scroll-reveal">
+      <section id="installations" className="py-12 md:py-20 bg-black scroll-reveal">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Инсталляции</h2>
-          <p className="text-center text-muted-foreground mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 md:mb-4 fire-glow">Инсталляции</h2>
+          <p className="text-center text-sm sm:text-base text-muted-foreground mb-8 md:mb-12 px-4">
             Огненные церемонии и оформление вашего праздника
           </p>
 
@@ -738,19 +744,19 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-black to-card scroll-reveal">
+      <section className="py-12 md:py-20 bg-gradient-to-b from-black to-card scroll-reveal">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Калькулятор стоимости</h2>
-          <p className="text-center text-muted-foreground mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 md:mb-4 fire-glow">Калькулятор стоимости</h2>
+          <p className="text-center text-sm sm:text-base text-muted-foreground mb-8 md:mb-12 px-4">
             Рассчитайте примерную стоимость выступления
           </p>
           
           <Card className="max-w-2xl mx-auto bg-card border-primary/20">
-            <CardContent className="p-8">
+            <CardContent className="p-4 sm:p-6 md:p-8">
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-semibold mb-3">Тип программы</label>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  <label className="block text-sm sm:text-base font-semibold mb-3">Тип программы</label>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
                     {[
                       { value: 'mystic', label: 'MYSTIC', price: '18000₽' },
                       { value: 'trailer', label: 'TRAILER', price: '30000₽' },
@@ -759,14 +765,14 @@ const Index = () => {
                       <button
                         key={prog.value}
                         onClick={() => setCalculatorData({...calculatorData, programType: prog.value})}
-                        className={`p-4 rounded-lg border-2 transition-all ${
+                        className={`p-3 sm:p-4 rounded-lg border-2 transition-all active:scale-95 ${
                           calculatorData.programType === prog.value 
                             ? 'border-primary bg-primary/20' 
                             : 'border-border hover:border-primary/50'
                         }`}
                       >
-                        <div className="font-bold">{prog.label}</div>
-                        <div className="text-sm text-muted-foreground">от {prog.price}</div>
+                        <div className="font-bold text-sm sm:text-base">{prog.label}</div>
+                        <div className="text-xs sm:text-sm text-muted-foreground">от {prog.price}</div>
                       </button>
                     ))}
                   </div>
@@ -809,9 +815,9 @@ const Index = () => {
                 </div>
 
                 <div className="pt-6 border-t border-border">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-lg font-semibold">Примерная стоимость:</span>
-                    <span className="text-4xl font-bold text-primary">{calculatePrice().toLocaleString('ru-RU')} ₽</span>
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mb-4">
+                    <span className="text-base sm:text-lg font-semibold">Примерная стоимость:</span>
+                    <span className="text-3xl sm:text-4xl font-bold text-primary">{calculatePrice().toLocaleString('ru-RU')} ₽</span>
                   </div>
                   <p className="text-sm text-muted-foreground mb-4">
                     <Icon name="Info" size={16} className="inline mr-2 text-primary" />
@@ -831,14 +837,14 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="gallery" className="py-20 bg-gradient-to-b from-card to-black scroll-reveal">
+      <section id="gallery" className="py-12 md:py-20 bg-gradient-to-b from-card to-black scroll-reveal">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Галерея</h2>
-          <p className="text-center text-muted-foreground mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 md:mb-4 fire-glow">Галерея</h2>
+          <p className="text-center text-sm sm:text-base text-muted-foreground mb-8 md:mb-12 px-4">
             Моменты наших выступлений
           </p>
           
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
             {gallery.map((image, index) => (
               <div 
                 key={index}
@@ -887,10 +893,10 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="prices" className="py-20 bg-gradient-to-b from-card to-black scroll-reveal">
+      <section id="prices" className="py-12 md:py-20 bg-gradient-to-b from-card to-black scroll-reveal">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Цены</h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 md:mb-4 fire-glow">Цены</h2>
+          <p className="text-center text-sm sm:text-base text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto px-4">
             Стоимость зависит от программы, продолжительности и сложности выступления
           </p>
           
@@ -966,14 +972,14 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="testimonials" className="py-20 bg-black scroll-reveal">
+      <section id="testimonials" className="py-12 md:py-20 bg-black scroll-reveal">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Отзывы клиентов</h2>
-          <p className="text-center text-muted-foreground mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 md:mb-4 fire-glow">Отзывы клиентов</h2>
+          <p className="text-center text-sm sm:text-base text-muted-foreground mb-8 md:mb-12 px-4">
             Что говорят о нас наши клиенты
           </p>
           
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
             {testimonials.map((testimonial, index) => (
               <Card 
                 key={index}
@@ -1025,10 +1031,10 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-black to-card scroll-reveal">
+      <section className="py-12 md:py-20 bg-gradient-to-b from-black to-card scroll-reveal">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Частые вопросы</h2>
-          <p className="text-center text-muted-foreground mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 md:mb-4 fire-glow">Частые вопросы</h2>
+          <p className="text-center text-sm sm:text-base text-muted-foreground mb-8 md:mb-12 px-4">
             Ответы на популярные вопросы о fire show
           </p>
           
@@ -1052,10 +1058,10 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contacts" className="py-20 bg-gradient-to-b from-card to-black scroll-reveal">
+      <section id="contacts" className="py-12 md:py-20 bg-gradient-to-b from-card to-black scroll-reveal">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 fire-glow">Контакты</h2>
-          <p className="text-center text-muted-foreground mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-3 md:mb-4 fire-glow">Контакты</h2>
+          <p className="text-center text-sm sm:text-base text-muted-foreground mb-8 md:mb-12 px-4">
             Свяжитесь с нами для заказа выступления
           </p>
           
@@ -1243,17 +1249,17 @@ const Index = () => {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center shadow-lg hover:shadow-primary/50 transition-all hover-scale"
+          className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 w-12 h-12 md:w-14 md:h-14 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center shadow-lg hover:shadow-primary/50 transition-all hover-scale"
           aria-label="Наверх"
         >
           <Icon name="ArrowUp" size={24} />
         </button>
       )}
 
-      <footer className="bg-card border-t border-primary/20 py-8">
+      <footer className="bg-card border-t border-primary/20 py-6 md:py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col gap-4 md:gap-6">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <img 
                   src="https://cdn.poehali.dev/files/6542e7b2-83ab-46b5-8dee-6d7f743b92c4.jpg" 
@@ -1295,7 +1301,7 @@ const Index = () => {
               </div>
             </div>
             <div className="text-center">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs sm:text-sm text-muted-foreground px-4">
                 © 2024 OUTCAST FIRE SHOW. Огненное шоу в Челябинске. Все права защищены.
               </p>
             </div>

@@ -194,4 +194,38 @@
   .animate-fade-in {
     animation: fade-in 0.6s ease-out;
   }
+
+  @media (max-width: 768px) {
+    body {
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    h1 {
+      line-height: 1.1;
+    }
+
+    h2 {
+      line-height: 1.2;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: rgba(220, 20, 60, 0.2);
+    }
+
+    .hover-scale:active {
+      transform: scale(0.95);
+    }
+  }
+
+  @media (hover: none) and (pointer: coarse) {
+    .hover-scale:hover {
+      transform: none;
+    }
+
+    .hover-scale:active {
+      transform: scale(0.95);
+    }
+  }
 }
